@@ -1,0 +1,183 @@
+*
+{
+	margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body
+{
+	font-size: 14px;
+	background: #f2f2f2;
+}
+.container
+{
+
+	background: white;
+	width: 500px;
+	padding: 25px;
+	margin: 50px auto; 
+	border-top: 5px solid darkblue;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.container img
+{
+	width: 450px;
+	height: 200px;
+	margin: 20px auto;
+}
+.container h1
+{
+    font-size: 24px;
+    line-height: 24px;
+    padding: 30px;
+    text-align: center;
+}
+
+.input-name
+{
+	width: 100%;
+	position: relative;
+	margin: 20px auto;
+}
+
+.input-names
+{
+	width: 100%;
+	margin: 20px auto;
+}
+
+
+.lock
+{
+	padding: 8px 11px;
+}
+
+.text-name
+{
+	width: 100%;
+	padding: 8px 0 8px 40px;
+}
+
+.input-name i
+{
+	position: absolute;
+	font-size: 18px;
+	color: blueviolet;
+	border-right: 1px solid #cccccc;
+}
+
+.input-names i
+{
+	
+	font-size: 18px;
+	color: blueviolet;
+	
+}
+
+.input-namez i
+{
+
+	font-size: 18px;
+	color: blueviolet;
+}
+.text-name
+{
+	border: 1px solid #cccccc;
+	outline:none;
+	-webkit-transition: all 0.3s;
+	cursor: pointer;
+}
+
+.text-name:hover, .text-name:focus
+{
+	background: lightgreen;
+	border: 1px solid blueviolet;
+
+}
+
+
+.checkbox
+{
+	margin-right: 8px;
+}
+
+
+.drop-down
+{
+	display: inline-block;
+	width: 88%;
+	height: 35px;
+	padding: 0px 10px;
+	cursor: pointer;
+	border: 1px solid #cccccc;
+	appearance: none;
+
+}
+
+.drop-down:hover, .drop-down:focus
+{
+	color:blueviolet;
+	background: lightgreen;
+	border-color: blueviolet;
+	outline: none;
+}
+
+
+.arrow
+{
+	position: absolute;
+	top: calc(50% - 4px);
+	right: 15px;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+	border-width: 8px 5px 0px 5px;
+	border-style: solid;
+	border-color: blue transparent transparent transparent;
+}
+
+.button
+{
+background-color: blueviolet;
+color: white;
+height: 35px;
+line-height: 35px;
+width: 100%;
+border: none;
+outline: none;
+font-size: 18px;
+cursor: pointer;
+margin-bottom: 10px;
+}
+
+.button:hover
+{
+	background: lightgreen;
+}
+
+@media (max-width: 480px)
+{
+	.container
+	{
+		width: 100%;
+		padding: 5px;
+	}
+    
+    .input-name
+    {
+    	margin-bottom: -10px;
+    }
+
+    .text-name
+    {
+    	width: 100%;
+    	padding: 8px 0px 8px 40px;
+    	margin-bottom: 10px;
+    }
+
+    .form-container
+    {
+    	width: 100%;
+    }
+}
