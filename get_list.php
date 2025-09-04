@@ -37,8 +37,30 @@ function getItemsByCategory($conn, $category) {
     return $items;
 }
 
-// Note: The connection ($conn) is kept open so it can be used by the including script
-// to fetch data. It should be closed in the script that includes this file,
-// once all database operations for that script are complete.
+/**
+ * Fetches all items from 'item_list' and groups them by category.
+ *
+ * @param mysqli $conn The database connection object.
+ * @return array A nested associative array of items grouped by category.
+ */
+function getAllItemsGroupedByCategory($conn) {
+    $groupedItems = [];
+    $sql = "SELECT category, line_sku FROM item_list ORDER BY category, line_sku";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $category = $row['category'];
+        $lineSku = $row['line_sku'];
+        
+        if (!isset($groupedItems[$category])) {
+            $groupedItems[$category] = [];
+        }
+        $groupedItems[$category][] = $lineSku;
+    }
+    $stmt->close();
+    return $groupedItems;
+}
 
+// Note: The connection ($conn) is kept open so it can be used by the including script.
 ?>
