@@ -67,7 +67,7 @@ $allColumns = array_merge($fixedColumns, $mslColumns);
 // Combine all placeholders
 $allPlaceholders = array_merge(array_fill(0, count($fixedColumns), '?'), $mslPlaceholders);
 
-$query = "INSERT INTO MTMARKET (" . implode(', ', $allColumns) . ") VALUES (" . implode(', ', $allPlaceholders) . ")";
+$query = "INSERT INTO MTMMARKET (" . implode(', ', $allColumns) . ") VALUES (" . implode(', ', $allPlaceholders) . ")";
 
 // Prepare the statement
 $stmt = $conn->prepare($query);

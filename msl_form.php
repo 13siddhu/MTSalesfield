@@ -4,7 +4,7 @@
 // It retrieves previously submitted data from localStorage (client-side).
 
 // Include the database connection and functions file
-require_once 'get_list.php'; // Make sure the path is correct
+require_once 'get_list.php';
 
 // Fetch all items from the database, grouped by category
 $groupedItems = getAllItemsGroupedByCategory($conn);
@@ -18,7 +18,7 @@ $conn->close();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mondelez MSL Data</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -34,8 +34,9 @@ $conn->close();
                         <div class="msl-section">
                             <h2><?php echo htmlspecialchars($category); ?> MSL</h2>
                             <?php if (!empty($items)): ?>
-                                <?php foreach ($items as $item): 
-                                    $itemNameForInput = strtolower(str_replace([' ', '/', '-'], '_', $item));
+                                <?php foreach ($items as $item):
+                                    // This line generates the correct, clean name
+                                    $itemNameForInput = strtolower(preg_replace('/[^a-z0-9]+/', '_', $item));
                                     $inputName = $category . '_' . $itemNameForInput . '_status';
                                 ?>
                                     <div class="product-item">
@@ -83,7 +84,7 @@ $conn->close();
                             value.forEach(item => {
                                 const input = document.createElement('input');
                                 input.type = 'hidden';
-                                input.name = key + '[]'; // Ensure array name for checkboxes if needed
+                                input.name = key + '[]';
                                 input.value = item;
                                 hiddenFormDataDiv.appendChild(input);
                             });
@@ -98,8 +99,6 @@ $conn->close();
                 }
             } else {
                 console.warn('No form data found in localStorage. The user might have directly accessed this page.');
-                // Optionally redirect back to the first page or show a message
-                // window.location.href = 'index.php';
             }
 
             mslForm.addEventListener('submit', function(event) {
